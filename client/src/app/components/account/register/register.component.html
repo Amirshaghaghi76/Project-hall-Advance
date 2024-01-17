@@ -1,0 +1,57 @@
+<div class="content">
+    <form [formGroup]="registerFg" (ngSubmit)="registerFg.valid && register()">
+        <div class="title">
+            <h2> Create Account</h2>
+            <mat-icon class="icon" routerLink="home">
+                account_box
+            </mat-icon>
+        </div>
+
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label> Name</mat-label>
+            <input type="text" formControlName="nameCtrl" matInput placeholder="Your Name">
+            <mat-hint>Pelese Enter Your Name </mat-hint>
+            <mat-error *ngIf="NameCtrl.hasError('required')">This fild is required </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label> Password</mat-label>
+            <input type="password" formControlName="passwordCtrl" matInput placeholder="Your Password">
+            <mat-error *ngIf="PasswordCtrl.hasError('required')">This fild is required </mat-error>
+            <mat-error *ngIf="PasswordCtrl.hasError('minlength')"> It's too short. Min: 6 characters.</mat-error>
+            <mat-error *ngIf="PasswordCtrl.hasError('maxlength')"> It's too short. Max: 15 characters.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="warn">
+            <mat-label> Confrim Password</mat-label>
+            <input type="password" formControlName="confrimPasswordCtrl" matInput placeholder="Your Confrim Password">
+            <mat-error *ngIf="PasswordCtrl.hasError('required')">This fild is required </mat-error>
+            <mat-error *ngIf="PasswordCtrl.hasError('minlength')"> It's too short. Min: 6 characters.</mat-error>
+            <mat-error *ngIf="PasswordCtrl.hasError('maxlength')"> It's too short. Max: 15 characters.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" formControlName="emailCtrl" placeHolder="Your email" matInput>
+            <mat-hint>Pelese Enter Your Email</mat-hint>
+            <mat-error *ngIf="EmailCtrl.hasError('required')">This field is required.</mat-error>
+            <mat-error *ngIf="EmailCtrl.hasError('pattern')">Enter a valid email.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Age</mat-label>
+            <input type="number" formControlName="ageCtrl" placeHolder="Your Age" matInput>
+            <mat-hint>Pelese Enter Your Age</mat-hint>
+            <mat-error *ngIf="EmailCtrl.hasError('required')">This field is required.</mat-error>
+            <!-- <mat-error *ngIf="EmailCtrl.hasError('min')">The minimum age is eighteen.</mat-error> -->
+        </mat-form-field>
+
+        <div class="panel">
+            <button type="submit" [disabled]="registerFg.invalid" mat-raised-button color="accent">register</button>
+            <button [disabled]="registerFg.invalid" mat-raised-button color="primary" (click)="ClearForm()">
+                reset</button>
+        </div>
+        <p class="check" *ngIf="passwordNotMatch"> passwordNotMatch</p>
+        <p class="check" *ngIf="apiErrorMessage">{{apiErrorMessage}}</p>
+    </form>
+</div>

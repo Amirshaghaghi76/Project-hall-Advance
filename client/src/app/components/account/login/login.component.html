@@ -1,0 +1,30 @@
+<div class="content">
+    <form [formGroup]="loginFg" (ngSubmit)="loginFg.valid && login()">
+        <div>
+            <h2> Login to account</h2>
+
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" formControlName="emailCtrl" placeHolder="Your email" matInput>
+            <mat-hint>Pelese Enter Your Email</mat-hint>
+            <mat-error *ngIf="EmailCtrl.hasError('required')">This field is required.</mat-error>
+            <mat-error *ngIf="EmailCtrl.hasError('pattern')">Enter a valid email.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="warn">
+            <mat-label> Password</mat-label>
+            <input type="password" formControlName="passwordCtrl" matInput placeholder="Your Confrim Password">
+            <mat-error *ngIf="PasswordCtrl.hasError('required')">This fild is required </mat-error>
+            <mat-error *ngIf="PasswordCtrl.hasError('minlength')"> It's too short. Min: 6 characters.</mat-error>
+            <mat-error *ngIf="PasswordCtrl.hasError('maxlength')"> It's too short. Max: 15 characters.</mat-error>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="accent"> Sign in</button>
+
+        <p *ngIf="apiErrorMassage">{{apiErrorMassage}}</p>
+    </form>
+
+    <!-- <button (click)="gerState()">State</button>
+  <p>{{loginFg.value| json}}</p> -->
+</div>

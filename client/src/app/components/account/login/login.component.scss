@@ -1,0 +1,38 @@
+.content {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+
+    h2 {
+        margin-top: 0.5rem;
+        color: rgb(58, 141, 230);
+        font-weight: bold;
+        font-size: 1.75rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 30rem;
+        border-radius: 0.4rem;
+        border: 1rem solid;
+        border-color: rgb(88, 147, 211) rgb(177, 84, 152) rgb(177, 84, 152) rgb(88, 147, 211);
+        background-image: linear-gradient(rgb(121, 198, 232), rgb(237, 147, 238), rgb(249, 249, 249));
+
+        mat-form-field {
+            min-width: 25rem;
+
+        }
+
+        p {
+            color: red;
+        }
+
+        button {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+}

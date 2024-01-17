@@ -1,0 +1,51 @@
+.content{
+  display: flex;
+  justify-content: center;
+  
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border: 0.5rem solid;
+  border-color: rgb(88, 147, 211) rgb(177, 84, 152) rgb(177, 84, 152) rgb(88, 147, 211);
+  width: 50%;
+  margin-top: 1rem;
+  
+  
+
+  h2 {
+    padding-top: 1rem;
+    color: rgb(152, 17, 98);
+    font-weight: bold;
+    font-style:oblique;
+  }
+
+  .Capacity {
+    font-size: 0.7rem;
+    color: rgb(156, 33, 70);
+    font-weight: bold;
+  }
+
+
+
+  .Checkbox {
+    border: 3px solid rgb(138, 36, 121);
+    display: flex;
+    // flex-wrap: wrap;
+    align-items: center;
+    width: 28rem;
+
+    // margin-left: 5px;
+    P {
+      padding-top: 0.5rem;
+      padding-left: 0.4rem;
+      color: rgb(170, 47, 119);
+      font-weight: bold;
+    }
+  }
+  button{
+    margin-bottom: 0.5rem;
+  }
+}
+}

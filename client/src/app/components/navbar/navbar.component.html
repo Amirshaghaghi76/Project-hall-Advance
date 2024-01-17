@@ -1,0 +1,70 @@
+<mat-toolbar class="navbar">
+    <section class="left">
+        <button *ngIf="user; else LoginRegisterSection" [mat-menu-trigger-for]="menu" class="email-button" mat-mini-fab>
+
+            <!-- <button (click)="Logout()" mat-raised-button color="accent"> Logout</button> -->
+            <span> {{user.email[0]|lowercase}} </span>
+        </button>
+
+        <ng-template #LoginRegisterSection>
+            <button routerLink='register-account' mat-raised-button color="primary"> Sign up</button>
+            <button routerLink='login-account' mat-raised-button color="warn" class="login-button"> Login</button>
+        </ng-template>
+
+        <mat-menu #menu [class]="'mat-menu'">
+            <div *ngIf="user" class="user-data">
+                <div class="image-profile">
+                    <p> {{user.email[0] | titlecase}}</p>
+                </div>
+                <div>
+                    <p> {{user.id}}</p>
+                    <p class="email"> {{user.email}}</p>
+
+                </div>
+            </div>
+            <mat-divider> </mat-divider>
+            <mat-list>
+                <mat-list-item>
+                    <div class="menu-items">
+                        <mat-icon>edit_note</mat-icon>
+                        Edit Profile
+                    </div>
+                </mat-list-item>
+            </mat-list>
+
+            <mat-list>
+                <mat-list-item>
+                    <div class="menu-items">
+                        <mat-icon>flaky</mat-icon>
+                        All Members
+                    </div>
+                </mat-list-item>
+            </mat-list>
+
+            <mat-list>
+                <mat-list-item>
+                    <div class="menu-items">
+                        <mat-icon>assignment_returned</mat-icon>
+                        Message
+                    </div>
+                </mat-list-item>
+            </mat-list>
+            <mat-divider> </mat-divider>
+            <div class="logout">
+                <button (click)="Logout()" mat-raised-button> Logout</button>
+            </div>
+        </mat-menu>
+       
+    </section>
+    <!-- <p class="ShowEmail" *ngIf="user">{{user.email}}</p> -->
+    <section class="right">
+        <ul class="list">
+            <li routerLink="comment"> Comments</li>
+            <li> Adversting</li>
+            <li> home</li>
+            <!-- <mat-icon class="icon" routerLink="home" fontIcon="home">
+            </mat-icon> -->
+            <!-- <a routerLink="home">home</a> -->
+        </ul>
+    </section>
+</mat-toolbar>
