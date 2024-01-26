@@ -4,10 +4,10 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoginUser } from '../../../model/login.user.model';
-import { AccountService } from '../../../services/account.service';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
+import { AccountService } from '../../../services/account.service';
 
 @Component({
   standalone: true,

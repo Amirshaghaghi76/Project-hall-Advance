@@ -3,15 +3,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterUser } from '../../../model/register-user.model';
-import { AccountService } from '../../../services/account.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { AccountService } from '../../../services/account.service';
 @Component({
   standalone: true,
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  imports:[MatFormFieldModule,MatIconModule,CommonModule,ReactiveFormsModule,FormsModule]
+  imports: [MatFormFieldModule, MatIconModule, CommonModule, ReactiveFormsModule, FormsModule]
 })
 export class RegisterComponent {
   passwordNotMatch: boolean | undefined;

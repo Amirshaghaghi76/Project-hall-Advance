@@ -14,8 +14,8 @@ export const routes: Routes = [
     { path: 'add-hall', component: AddHallComponent },
     { path: 'search-hall', component: SearchHallComponent },
     { path: 'wedding-advice', component: WeddingAdviceComponent },
-    { path: 'register-account', component: RegisterComponent },
-    { path: 'login-account', component: LoginComponent },
+    { path: 'account/register', component: RegisterComponent },
+    { path: 'account/login', component: LoginComponent },
     { path: 'comment', component: CommentComponent },
 
     { path: '**', component: NotFoundComponent, pathMatch: 'full' },];

@@ -8,8 +8,14 @@
             <mat-label>Email</mat-label>
             <input type="email" formControlName="emailCtrl" placeHolder="Your email" matInput>
             <mat-hint>Pelese Enter Your Email</mat-hint>
-            <mat-error *ngIf="EmailCtrl.hasError('required')">This field is required.</mat-error>
+            <!-- <mat-error *ngIf="EmailCtrl.hasError('required')">This field is required.</mat-error> -->
             <mat-error *ngIf="EmailCtrl.hasError('pattern')">Enter a valid email.</mat-error>
+
+            @if (EmailCtrl.hasError('required')) {
+            <mat-error> This field is required. </mat-error>
+            }
+       
+        
         </mat-form-field>
 
         <mat-form-field appearance="outline" color="warn">
