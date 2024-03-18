@@ -20,7 +20,7 @@ namespace api.Controllers
             if (userInput.PassWord != userInput.ConfrimPassword)
                 return BadRequest("password dont match");
 
-            LoggedInDto? loggedInDto = await _accountRepository.Create(userInput, cancellationToken);
+            LoggedInDto? loggedInDto = await _accountRepository.CreateAsync(userInput, cancellationToken);
 
             if (loggedInDto is null)
                 return BadRequest("Email/Username is taken.");
@@ -31,7 +31,7 @@ namespace api.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LoggedInDto>> Login(LoginDto userInput, CancellationToken cancellationToken)
         {
-            LoggedInDto? userDto = await _accountRepository.Login(userInput, cancellationToken);
+            LoggedInDto? userDto = await _accountRepository.LoginAsync(userInput, cancellationToken);
 
             if (userDto is null)
                 return Unauthorized ("Wrong username or password");

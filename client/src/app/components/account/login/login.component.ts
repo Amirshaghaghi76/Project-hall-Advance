@@ -8,6 +8,7 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { AccountService } from '../../../services/account.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
@@ -15,7 +16,7 @@ import { AccountService } from '../../../services/account.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   imports: [MatFormFieldModule, CommonModule, FormsModule,
-    ReactiveFormsModule, MatInputModule,]
+    ReactiveFormsModule, MatInputModule, MatButtonModule]
 })
 export class LoginComponent implements OnDestroy {
   apiErrorMassage: string | undefined;

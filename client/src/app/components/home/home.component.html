@@ -1,6 +1,6 @@
-<body>
-  <!-- header- content (class) -->
 
+  <!-- header- content (class) -->
+<div class="main">
   <div class="header-content">
     <mat-card class="card-title">
       <mat-card-header>
@@ -15,7 +15,7 @@
       </mat-card-header>
       <mat-card-content>
         <button routerLink="/search-hall" mat-raised-button color="accent"> Search Hall</button>
-        <button class="button-add-hall" routerLink="/add-hall" mat-raised-button color="accent"> Add Hall</button>
+        <button class="button-add-hall" routerLink="add-hall" mat-raised-button color="accent"> Add Hall</button>
       </mat-card-content>
     </mat-card>
 
@@ -28,12 +28,14 @@
       <br>
       {{user.email}}
     </h1> -->
-    }
+    
+  }
+  
   </div>
   <!-- header-content (class) -->
 
   <!--  counseling (class) -->
-  <div class="Counseling">
+  <!-- <div class="Counseling">
     <form [formGroup]="counselingFg">
       <h2> Wedding advice </h2>
       <mat-form-field class="input" appearance="outline" color="warn">
@@ -44,7 +46,7 @@
       <button (click)="registerCounseling()" [disabled]="counselingFg.invalid" mat-raised-button color="accent"
         routerLink="/wedding-advice"> submit </button>
     </form>
-  </div>
+  </div> -->
   <!-- counseling(class) -->
 
   <!-- content (class) -->
@@ -247,6 +249,6 @@
       </mat-card-actions>
     </mat-card>
   </section>
+</div>
   <!-- content(class) -->
-</body>
 <app-footer></app-footer>

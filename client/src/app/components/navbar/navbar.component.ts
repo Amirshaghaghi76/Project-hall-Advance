@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { User } from '../../model/user.model';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -7,17 +7,20 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountService } from '../../services/account.service';
+import { Observable } from 'rxjs';
 
 @Component({
   standalone: true,
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  imports: [MatToolbarModule, MatMenuModule, CommonModule, MatButtonModule,
-    MatDividerModule, MatListModule, MatIconModule, RouterLink],
+  imports: [MatToolbarModule, MatMenuModule,
+    MatButtonModule, CommonModule, RouterModule,
+    MatDividerModule, MatListModule, MatIconModule],
+
 })
 export class NavbarComponent {
   user: User | null | undefined;
@@ -27,7 +30,13 @@ export class NavbarComponent {
       next: response => this.user = response
     })
   }
+  // accountService = inject(AccountService);
 
+  // user$: Observable<User | null> | undefined;
+
+  // ngOnInit(): void {
+  //   this.user$ = this.accountService.currentUser$;
+  // }
 
   Logout(): void {
     this.accountService.LogoutUser();

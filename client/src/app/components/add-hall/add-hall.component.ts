@@ -9,14 +9,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
   selector: 'app-add-hall',
   templateUrl: './add-hall.component.html',
   styleUrls: ['./add-hall.component.scss'],
-  imports: [MatFormFieldModule, MatSelectModule, CommonModule,
-    ReactiveFormsModule, FormsModule, MatCheckboxModule],
+  // imports: [MatFormFieldModule, MatSelectModule, CommonModule,
+  //   ReactiveFormsModule, FormsModule, MatCheckboxModule,MatInputModule,MatButtonModule],
 })
 export class AddHallComponent {
   cities: string[] = ['tehran', 'karaj',]

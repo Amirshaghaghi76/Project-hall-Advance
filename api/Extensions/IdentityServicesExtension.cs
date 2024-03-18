@@ -17,7 +17,11 @@ public static class IdentityServiceExtension
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenValue)),
                         ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateAudience = false, 
+                        ValidateLifetime = true
+                        // TODO add (ValidateLifetime = true)date expire 7 day token in dotnet 
+                        // TODO else If = false create new token
+
                     };
                 });
         }

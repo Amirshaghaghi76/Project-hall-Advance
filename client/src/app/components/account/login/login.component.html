@@ -2,35 +2,50 @@
     <form [formGroup]="loginFg" (ngSubmit)="loginFg.valid && login()">
         <div>
             <h2> Login to account</h2>
-
         </div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="primary">
             <mat-label>Email</mat-label>
             <input type="email" formControlName="emailCtrl" placeHolder="Your email" matInput>
             <mat-hint>Pelese Enter Your Email</mat-hint>
-            <!-- <mat-error *ngIf="EmailCtrl.hasError('required')">This field is required.</mat-error> -->
-            <mat-error *ngIf="EmailCtrl.hasError('pattern')">Enter a valid email.</mat-error>
-
             @if (EmailCtrl.hasError('required')) {
+            <mat-error> This field is required.</mat-error>
+            }
+            @else if (EmailCtrl.hasError('pattern')) {
             <mat-error> This field is required. </mat-error>
             }
-       
-        
         </mat-form-field>
 
-        <mat-form-field appearance="outline" color="warn">
-            <mat-label> Password</mat-label>
-            <input type="password" formControlName="passwordCtrl" matInput placeholder="Your Confrim Password">
-            <mat-error *ngIf="PasswordCtrl.hasError('required')">This fild is required </mat-error>
-            <mat-error *ngIf="PasswordCtrl.hasError('minlength')"> It's too short. Min: 6 characters.</mat-error>
-            <mat-error *ngIf="PasswordCtrl.hasError('maxlength')"> It's too short. Max: 15 characters.</mat-error>
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Password</mat-label>
+            <input type="password" formControlName="passwordCtrl" placeholder="Your Password" matInput>
+            <mat-hint> Pelese Enter Your Password</mat-hint>
+            @if (PasswordCtrl.hasError('required')) {
+            <mat-error> This field is required.</mat-error>
+            }
+            @else if (PasswordCtrl.hasError('minlength')) {
+            <mat-error> It's too short. Min: 6 characters.</mat-error>
+            }
+            @else if (PasswordCtrl.hasError('maxlength')) {
+            <mat-error> It's too short. Max: 15 character.</mat-error>
+            }
         </mat-form-field>
 
-        <button type="submit" mat-raised-button color="accent"> Sign in</button>
-
-        <p *ngIf="apiErrorMassage">{{apiErrorMassage}}</p>
+        <button type="submit" [disabled]="loginFg.invalid" mat-raised-button color="accent"> Sign in</button>
+        @if ( apiErrorMassage){
+        <p>{{apiErrorMassage}} </p>
+        }
     </form>
 
     <!-- <button (click)="gerState()">State</button>
   <p>{{loginFg.value| json}}</p> -->
 </div>
+<!-- if in angular 16 -->
+<!-- <mat-form-field appearance="outline" color="warn">
+                <mat-label> Password</mat-label>
+                <input type="password" formControlName="passwordCtrl" matInput placeholder="Your Confrim Password">
+                <mat-error *ngIf="PasswordCtrl.hasError('required')">This fild is required </mat-error>
+                <mat-error *ngIf="PasswordCtrl.hasError('minlength')"> It's too short. Min: 6 characters.</mat-error>
+                <mat-error *ngIf="PasswordCtrl.hasError('maxlength')"> It's too short. Max: 15 characters.</mat-error>
+            </mat-form-field> -->
+
+<!-- if in angular17 -->

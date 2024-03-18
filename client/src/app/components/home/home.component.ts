@@ -12,15 +12,18 @@ import { FooterComponent } from "../footer/footer.component";
 import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [MatFormFieldModule, CommonModule, MatCardModule,
+  imports: [
+    MatFormFieldModule, CommonModule, MatCardModule,
     MatIconModule, FormsModule, MatButtonModule,
-    ReactiveFormsModule, FooterComponent]
+    ReactiveFormsModule, FooterComponent,RouterModule
+  ]
 })
 export class HomeComponent {
   counselingRes: Counseling | undefined;

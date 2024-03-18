@@ -18,13 +18,14 @@ namespace api.Services
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenValue!));
         }
 
-        public string CreateToken(AppUser user)
+        public string CreateToken(AppUser appUser)
         {
             _ = _key ?? throw new ArgumentNullException("_key cannot be null", nameof(_key));
 
             var claims = new List<Claim>
             {
-             new Claim(JwtRegisteredClaimNames.NameId,user.Id!)
+             new Claim(JwtRegisteredClaimNames.NameId,appUser.Id!)
+            //  new Claim(JwtRegisteredClaimNames.Email,appUser.Email) 
             };
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512);

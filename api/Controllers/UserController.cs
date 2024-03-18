@@ -1,5 +1,6 @@
 
 using api.Dtos;
+using api.Extensions;
 using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers;
@@ -16,8 +17,6 @@ public class UserController : ControllerBase
         _userRepository = userRepository;
     }
 
-
-
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserDto>>> GetAll(CancellationToken cancellationToken)
     {
@@ -28,19 +27,45 @@ public class UserController : ControllerBase
         return userDtos;
     }
     [Authorize]
-    [HttpGet("get-by-id/{userId}")]
-    public async Task<ActionResult<UserDto>> GetById(string userId, CancellationToken cancellationToken)
+    [HttpGet("get-by-id")]
+    public async Task<ActionResult<UserDto>> GetById(CancellationToken cancellationToken)
     {
-        UserDto? userDto = await _userRepository.GetByIdAsync(userId, cancellationToken);
+        // string? userId = ClaimPrincipalExtensions.GetUserId(User);
+        //TODO UserDto? userDto = await _userRepository.GetByIdAsync(ClaimPrincipalExtensions.GetUserId(User), cancellationToken);
+        // UserDto? userDto = await _userRepository.GetByIdAsync(userId, cancellationToken);
+        UserDto? userDto = await _userRepository.GetByIdAsync(User.GetUserId(), cancellationToken);
+
 
         if (userDto is null)
             return NotFound("No user was found");
 
+        return userDto;
+    }
+
+    // [HttpGet("get-by-id/{userId}")]
+    // public async Task<ActionResult<UserDto>> GetById(string userId, CancellationToken cancellationToken)
+    // {
+    //     UserDto? userDto = await _userRepository.GetByIdAsync(userId, cancellationToken);
+
+    //     if (userDto is null)
+    //         return NotFound("No user was found");
+
+    //     return userDto;
+    // }
+
+    [HttpGet("get-by-email/{userEmail}")]
+    public async Task<ActionResult<UserDto>> GetByEmail(string userEmail, CancellationToken cancellationToken)
+    {
+        UserDto? userDto = await _userRepository.GetByEmailAsync(userEmail, cancellationToken);
+
+        if (userDto is null)
+            return NotFound("no user with this email address");
 
         return userDto;
     }
 
 }
+
 
 
 

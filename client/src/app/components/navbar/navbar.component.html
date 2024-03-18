@@ -1,27 +1,28 @@
 <mat-toolbar class="navbar">
     <section class="left">
-        <button *ngIf="user; else LoginRegisterSection" [mat-menu-trigger-for]="menu" class="email-button" mat-mini-fab>
-
-            <!-- <button (click)="Logout()" mat-raised-button color="accent"> Logout</button> -->
+        @if (user) {
+        <button [mat-menu-trigger-for]="menu" class="email-button" mat-mini-fab>
             <span> {{user.email[0]|lowercase}} </span>
         </button>
-
-        <ng-template #LoginRegisterSection>
-            <button routerLink='account/register' mat-raised-button color="primary"> Sign up</button>
-            <button routerLink='account/login' mat-raised-button color="warn" class="login-button"> Login</button>
-        </ng-template>
+        }
+        @else {
+        <button routerLink='account/register' mat-raised-button color="primary"> Sign up</button>
+        <button routerLink='account/login' mat-raised-button color="warn" class="login-button"> Login</button>
+        }
 
         <mat-menu #menu [class]="'mat-menu'">
-            <div *ngIf="user" class="user-data">
+            @if (user) {
+            <div class="user-data">
                 <div class="image-profile">
                     <p> {{user.email[0] | titlecase}}</p>
                 </div>
                 <div>
                     <p> {{user.id}}</p>
                     <p class="email"> {{user.email}}</p>
-
                 </div>
             </div>
+            }
+
             <mat-divider> </mat-divider>
             <mat-list>
                 <mat-list-item>
@@ -54,7 +55,7 @@
                 <button (click)="Logout()" mat-raised-button> Logout</button>
             </div>
         </mat-menu>
-       
+
     </section>
     <!-- <p class="ShowEmail" *ngIf="user">{{user.email}}</p> -->
     <section class="right">
@@ -62,8 +63,8 @@
             <li routerLink="comment"> Comments</li>
             <li> Adversting</li>
             <li> home</li>
-            <!-- <mat-icon class="icon" routerLink="home" fontIcon="home">
-            </mat-icon> -->
+            <mat-icon class="icon" routerLink="home" fontIcon="home">
+            </mat-icon>
             <!-- <a routerLink="home">home</a> -->
         </ul>
     </section>

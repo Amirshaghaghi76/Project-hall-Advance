@@ -4,6 +4,7 @@ namespace api.Repositories;
 
 public class UserRepository : IUserRepository
 {
+
     private const string _collectionName = "users";
 
     IMongoCollection<AppUser>? _collection;
@@ -23,14 +24,11 @@ public class UserRepository : IUserRepository
         {
             foreach (AppUser appUser in appUsers)
             {
-        UserDto userDto = new (
-                    Id: appUser.Id!,
-                    Email: appUser.Email,
-                    Age: appUser.Age
-                );
+                UserDto userDto = _Mappers.ConvertAppUserToUserDto(appUser);
 
                 userDtos.Add(userDto);
             }
+
             return userDtos;
         }
 
@@ -39,15 +37,41 @@ public class UserRepository : IUserRepository
 
     public async Task<UserDto?> GetByIdAsync(string userId, CancellationToken cancellationToken)
     {
+        
         AppUser appUser = await _collection.Find<AppUser>(user => user.Id == userId).FirstOrDefaultAsync(cancellationToken);
 
-        if (appUser is not null)
-            return new UserDto(
-                Id: appUser.Id!,
-                Email: appUser.Email,
-                Age: appUser.Age
+        if (appUser.Id is not null)
+        {
+            // UserDto userDto = GeneRateUserDto(appUser);
+            // return userDto;
+            return _Mappers.ConvertAppUserToUserDto(appUser);
+        }
 
-            );
+        return null;
+    }
+
+    public async Task<UserDto?> GetByEmailAsync(string userEmail, CancellationToken cancellationToken)
+    {
+        AppUser appUser = await _collection.Find<AppUser>(user =>
+        user.Email == userEmail).FirstOrDefaultAsync(cancellationToken);
+
+        if (appUser.Id is not null)
+        {
+            return _Mappers.ConvertAppUserToUserDto(appUser);
+            // return new UserDto(
+            //     Id: appUser.Id!,
+            //     Email: appUser.Email,
+            //     KnownAs: appUser.KnownAs,
+            //     Created: appUser.Created,
+            //     Gender: appUser.Gender,
+            //     LastActive: appUser.LastActive,
+            //     LookingFor: appUser.LookingFor,
+            //     City: appUser.City,
+            //     Country: appUser.Country,
+            //     Dob: appUser.DateOfBirth,
+            //     Photos: appUser.Photos
+            //  );
+        }
 
         return null;
     }
