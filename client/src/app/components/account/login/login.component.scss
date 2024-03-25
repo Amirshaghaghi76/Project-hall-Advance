@@ -1,13 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .content {
     display: flex;
     justify-content: center;
-    margin-top: 10rem;
+    margin-top: 12rem;
 
     h2 {
         margin-top: 0.5rem;
-        color: rgb(58, 141, 230);
         font-weight: bold;
-        font-size: 1.75rem;
+        font-size: 1.90rem;
     }
 
     form {
@@ -15,16 +19,13 @@
         flex-direction: column;
         align-items: center;
         gap: 1rem;
-        width: 30rem;
-        border-radius: 0.4rem;
-        border: 1rem solid;
+
         border-color: rgb(88, 147, 211) rgb(177, 84, 152) rgb(177, 84, 152) rgb(88, 147, 211);
         background-image: linear-gradient(rgb(121, 198, 232), rgb(237, 147, 238), rgb(249, 249, 249));
 
         mat-form-field {
             min-width: 25rem;
-
-        }
+        } color: rgb(58, 141, 230);
 
         p {
             color: red;
@@ -37,22 +38,92 @@
 
 }
 
-@media only screen and (min-width: 17rem) {
+@media only screen and (min-width: 20rem) {
     .content {
-        display: flex;
-        justify-content: center;
-        margin-top: 5rem;
 
         h2 {
-            font-size: 1rem;
-            color: rebeccapurple;
+            color: rgb(69, 111, 210);
+            font-family: 'Times New Roman', Times, serif;
         }
 
         form {
-            width: 20rem;
-            display: flex;
-            align-items: center;
-            margin-left: 2rem;
+            width: 18rem;
+            border: 0.5rem solid;
+            background-image: linear-gradient(rgb(112, 215, 231), rgb(225, 117, 223), rgb(191, 108, 207));
+            border-color: rgb(30, 227, 223) rgb(28, 171, 181) rgb(205, 78, 171) rgb(176, 78, 163);
+
+            mat-form-field {
+                min-width: 17rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 25rem) {
+    .content {
+        h2 {
+            color: rgb(101, 89, 210);
+        }
+
+        form {
+            width: 23rem;
+            border: 1rem groove;
+            border-radius: 0.5rem;
+            border-color: rgb(61, 136, 216) rgb(63, 195, 248) rgb(186, 84, 128) rgb(218, 107, 188);
+
+            mat-form-field {
+                min-width: 21rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 30rem) {
+
+    .content {
+        h2 {
+            color: rgb(108, 59, 156);
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form {
+            border: 1rem solid;
+            border-radius: 1rem;
+            border-color: rgb(58, 166, 213) rgb(227, 85, 206) rgb(227, 85, 206) rgb(96, 180, 203);
+            background-image: linear-gradient(rgb(237, 147, 238), rgb(121, 198, 232), rgb(237, 147, 238), rgb(249, 249, 249));
+            width: 28.5rem;
+
+            mat-form-field {
+                min-width: 25rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 50rem) {
+    .content {
+
+        h2 {
+            font-size: 2.5rem;
+            color: rgb(38, 110, 126);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        form {
+            border: 1rem inset;
+            border-radius: 1rem;
+            border-color: rgb(49, 198, 225) rgb(88, 196, 211) rgb(168, 89, 225) rgb(179, 112, 227);
+            background-image: linear-gradient(rgb(113, 197, 221), rgb(62, 174, 238), rgb(237, 147, 238), rgb(180, 121, 198));
+            width: 35rem;
+
+            mat-form-field {
+                min-width: 30rem;
+            }
+
+            button {
+                width: 5rem;
+            }
         }
     }
 }

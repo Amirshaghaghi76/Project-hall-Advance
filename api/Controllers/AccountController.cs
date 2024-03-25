@@ -3,7 +3,7 @@ using api.Interfaces;
 
 namespace api.Controllers
 {
-    [ApiController]
+    // [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {

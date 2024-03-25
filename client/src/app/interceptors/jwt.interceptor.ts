@@ -4,19 +4,26 @@
 // import { AccountService } from '../services/account.service'; 
 // import { json } from 'node:stream/consumers';
 
+import { isPlatformBrowser } from '@angular/common';
 import { HttpInterceptorFn } from '@angular/common/http';
+import { PLATFORM_ID, inject } from '@angular/core';
 
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = localStorage.getItem('token');
+  const platformId = inject(PLATFORM_ID);
 
-  if (token) {
+  if (isPlatformBrowser(platformId)) {
+
+    const token = localStorage.getItem('token');
+
+    if (token) {
+    }
     req = req.clone({
       setHeaders: {
         Authorization: `beare ${token}`
       }
-    })
+    });
   }
-  
+
   return next(req);
 };
 
