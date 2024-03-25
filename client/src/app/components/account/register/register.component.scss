@@ -27,8 +27,7 @@
         border: 1rem solid;
         border-radius: 1rem;
         border-color: rgb(58, 133, 213) rgb(110, 166, 227) rgb(223, 91, 188) rgb(185, 75, 155);
-        background-image: linear-gradient(rgb(237, 147, 238), rgb(121, 198, 232),rgb(237, 147, 238), rgb(249, 249, 249));
-
+        background-image: linear-gradient(rgb(237, 147, 238), rgb(121, 198, 232), rgb(237, 147, 238), rgb(249, 249, 249));
         width: 28rem;
         margin-top: 1rem;
         gap: 1.5rem;
@@ -43,7 +42,6 @@
             button {
                 margin: 0.5rem;
             }
-
         }
     }
 
@@ -52,6 +50,15 @@
         font-size: 1.5rem;
         font-weight: bold;
     }
+}
 
+@media only screen and (min-width: 20rem) {
+    .content {
 
+        form {
+            width: 24rem;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+    }
 }

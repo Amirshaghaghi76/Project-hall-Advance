@@ -1,5 +1,6 @@
 <mat-toolbar class="navbar">
     <section class="left">
+        <!-- if in html in angular 17 -->
         @if (user) {
         <button [mat-menu-trigger-for]="menu" class="email-button" mat-mini-fab>
             <span> {{user.email[0]|lowercase}} </span>
@@ -57,7 +58,7 @@
         </mat-menu>
 
     </section>
-    <!-- <p class="ShowEmail" *ngIf="user">{{user.email}}</p> -->
+    <!-- <p class="ShowEmail" *ngIf="user">{{user.email}}</p>  // if in html in angular 16   -->
     <section class="right">
         <ul class="list">
             <li routerLink="comment"> Comments</li>
@@ -65,7 +66,16 @@
             <li> home</li>
             <mat-icon class="icon" routerLink="home" fontIcon="home">
             </mat-icon>
-            <!-- <a routerLink="home">home</a> -->
         </ul>
+        <div class="menu-responsive">
+            <button class="button-menu" [matMenuTriggerFor]="aboveMenu" mat-raised-button color="accent">Menu</button>
+            <mat-menu #aboveMenu [class]="'mat-menu-response'">
+                <div class="button-menu">
+                    <button routerLink="Comments" mat-menu-item>Comments</button>
+                    <button mat-menu-item>Adversting</button>
+                    <button routerLink="home" mat-menu-item>Home</button>
+                </div>
+            </mat-menu>
+        </div>
     </section>
 </mat-toolbar>

@@ -16,20 +16,14 @@
             font-weight: bold;
             display: flex;
             align-items: center;
-
         }
     }
 }
 
 ::ng-deep .mat-menu {
-
     border: 0.5rem solid;
     border-color: rgb(174, 118, 226) rgb(84, 137, 177) rgb(84, 137, 177) rgb(174, 118, 226);
     border-radius: 1rem;
-
-
-
-    // background-image: linear-gradient(rgb(85, 171, 213), rgb(169, 106, 203));
 
     .user-data {
         display: flex;
@@ -37,7 +31,6 @@
         align-items: center;
         gap: 0.5rem;
         padding: 1rem;
-
 
         * {
             display: flex;
@@ -70,12 +63,6 @@
         }
     }
 
-    //   .logout {
-    //         display: flex;
-    //         justify-content: center;
-    //         align-items: center;
-    //         background-color: #78bcde;
-    //     }
     .logout {
         display: flex;
         justify-content: center;
@@ -105,15 +92,12 @@ mat-list-item {
         font-weight: bold;
         padding-left: 1rem;
 
-
         &:hover {
             color: rgb(14, 114, 161);
             font-size: x-large;
             cursor: pointer;
             background-color: #78bcde;
         }
-
-
     }
 }
 
@@ -134,11 +118,76 @@ mat-list-item {
         color: rgb(33, 89, 149);
         cursor: pointer;
     }
-
 }
 
-// @media screen and(max-width:420px) {
-//     .navbar {
-//         background: rebeccapurple;
-//     }
-// }
+::ng-deep .mat-menu-response {
+    border: 0.5rem solid;
+    border-color: rgb(216, 84, 121) rgb(224, 121, 140);
+    border-radius: 1rem;
+
+    button {
+        color: #244561;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 20rem) {
+    .navbar {
+        background-image: linear-gradient(rgb(150, 72, 222), #78a3de);
+
+        .list {
+            display: none;
+        }
+
+        .button-menu {
+            margin-right: 1rem;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 30rem) {
+    .navbar {
+        background-image: linear-gradient(rgb(111, 181, 221), rgb(157, 106, 219));
+
+        .button-menu {
+            display: none;
+        }
+
+        .list {
+            display: flex;
+
+            li {
+                padding: 0.2rem;
+                font-size: 1rem;
+                font-family: initial;
+                color: rgb(45, 69, 156);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 50rem) {
+    .navbar {
+        background-image: linear-gradient(rgb(49, 198, 225) rgb(88, 196, 211) rgb(168, 89, 225) rgb(179, 112, 227));
+
+        .button-menu {
+            display: none;
+        }
+
+        .list {
+            display: flex;
+
+            li {
+                padding: 0.4rem;
+                font-size: 1.5rem;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+
+            .icon {
+                margin-top: 0.7rem;
+            }
+        }
+    }
+}
