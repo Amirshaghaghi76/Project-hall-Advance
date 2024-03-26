@@ -16,7 +16,7 @@ public class UserController : ControllerBase
     {
         _userRepository = userRepository;
     }
-
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserDto>>> GetAll(CancellationToken cancellationToken)
     {

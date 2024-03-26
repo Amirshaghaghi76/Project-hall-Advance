@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SearchHallComponent } from './components/search-hall/search-hall.component';
 import { WeddingAdviceComponent } from './components/wedding-advice/wedding-advice.component';
+import { ServerErrorComponent } from './components/server-error/server-error.component';
+import { MemberListComponent } from './components/member-list/member-list.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -17,5 +19,6 @@ export const routes: Routes = [
     { path: 'account/register', component: RegisterComponent },
     { path: 'account/login', component: LoginComponent },
     { path: 'comment', component: CommentComponent },
-
+    { path: 'server-error', component: ServerErrorComponent },
+    { path: 'member-list', component: MemberListComponent },
     { path: '**', component: NotFoundComponent, pathMatch: 'full' },];

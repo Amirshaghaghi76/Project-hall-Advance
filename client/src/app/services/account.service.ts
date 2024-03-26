@@ -54,17 +54,7 @@ export class AccountService {
     );
   }
   // TODO add method getUser To get user from api
-  getUser(): Observable<User | null> {
-    return this.http.get<User>(environment.apiUrl + 'user/get-by-id').pipe(
-      map((userResponce: User | null) => {
-
-        if (userResponce)
-          return userResponce
-
-        return null;
-      })
-    );
-  }
+  
 
   setCurrentUser(user: User): void {
     this.currentUserSourse.next(user);

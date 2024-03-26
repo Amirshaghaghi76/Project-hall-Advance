@@ -19,10 +19,10 @@ namespace api.Repositories
 
         public async Task<LoggedInDto?> CreateAsync(RegisterDto userInput, CancellationToken cancellationToken)
         {
-            bool doseAccountExist = await _collection.Find<AppUser>(user =>
+            bool doesAccountExist = await _collection.Find<AppUser>(user =>
             user.Email == userInput.Email.ToLower().Trim()).AnyAsync(cancellationToken);
 
-            if (doseAccountExist)
+            if (doesAccountExist)
                 return null;
             // using var hmac = new HMACSHA512();
 
@@ -40,12 +40,13 @@ namespace api.Repositories
                 //     Token: _tokenService.CreateToken(appUser)
                 // );
 
-                string toKen = _tokenService.CreateToken(appUser);
+                string token = _tokenService.CreateToken(appUser);
 
-                LoggedInDto loggedInDto = _Mappers.ConvertAppUserToLoggedInDto(appUser, toKen);
+                LoggedInDto loggedInDto = _Mappers.ConvertAppUserToLoggedInDto(appUser, token);
 
                 return loggedInDto;
             }
+            
             return null;
         }
 

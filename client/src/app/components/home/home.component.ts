@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MemberService } from '../../services/member.service';
 
 @Component({
   standalone: true,
@@ -22,7 +23,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     MatFormFieldModule, CommonModule, MatCardModule,
     MatIconModule, FormsModule, MatButtonModule,
-    ReactiveFormsModule, FooterComponent,RouterModule
+    ReactiveFormsModule, FooterComponent, RouterModule
   ]
 })
 export class HomeComponent {
@@ -30,9 +31,9 @@ export class HomeComponent {
 
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
-  private userService = inject(UserService);
+  private memberService = inject(MemberService);
   private counselingSeervice = inject(CounselingService)
-  alllUsers: User[] | null | undefined;
+  allUsers: User[] | null | undefined;
   allUsers$: Observable<User[] | null> | undefined;
 
   // constructor(private fb: FormBuilder, private http: HttpClient,
@@ -63,8 +64,8 @@ export class HomeComponent {
   }
 
   showAllUsers() {
-    this.userService.getAllUsers().subscribe({
-      next: ussers => this.alllUsers = ussers,
+    this.memberService.getAllMembers().subscribe({
+      next: users => this.allUsers = users,
       error: err => console.log(err)
     });
   }

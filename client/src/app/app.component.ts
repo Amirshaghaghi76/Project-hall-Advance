@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { AccountService } from './services/account.service';
 import { take } from 'rxjs';
+import { UserService } from './services/user.service';
 
 @Component({
   standalone: true,
@@ -17,6 +18,7 @@ import { take } from 'rxjs';
 export class AppComponent implements OnInit {
 
   accountService = inject(AccountService);
+  userService = inject(UserService);
   platformId = inject(PLATFORM_ID);
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class AppComponent implements OnInit {
 
       // userString = localStorage.getItem('user'); // before dte expire token (before video 21)
 
-      this.accountService.getUser().pipe(take(1)).subscribe(user => {
+      this.userService.getUser().pipe(take(1)).subscribe(user => {
         if (user)
           this.accountService.setCurrentUser(user);
         else {
@@ -40,12 +42,12 @@ export class AppComponent implements OnInit {
         }
       });
     }
-  
-//     if (userString) {  // before dte expire token (before video 21)
-//       const user: User = JSON.parse(userString); //convert to json before string
 
-//       this.accountService.setCurrentUser(user);
-//     }
-//   }
+    //     if (userString) {  // before dte expire token (before video 21)
+    //       const user: User = JSON.parse(userString); //convert to json before string
+
+    //       this.accountService.setCurrentUser(user);
+    //     }
+    //   }
   }
 }

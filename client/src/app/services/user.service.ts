@@ -13,46 +13,16 @@ export class UserService {
 
   private readonly baseApiUrl = environment.apiUrl + 'user/';
 
-  //#region Create requestOption like headers for each every http-request
-  // accountService=inject( AccountService);
-  getAllUsers(): Observable<User[] | null> {
-    //   let requestOptions;
+  getUser(): Observable<User | null> {
+    return this.http.get<User>(environment.apiUrl + 'user/get-by-id').pipe(
+      map((userResponce: User | null) => {
 
-    //   this.accountService.currentUser$.pipe(take(1)).subscribe({
-    //     next: currentUser => {
-    //       if (currentUser)
-    //         requestOptions = {
-    //           headers: new HttpHeaders({ 'Authorizaition': `bearer ${currentUser.token}` })
-    //         }
-    //     }
-    //   })
-
-    //   return this.http.get<User[]>('http://localhost:5000/api/user', requestOptions).pipe(
-    //     map(users => {
-    //       console.log(users)
-    //       return users;
-    //     })
-    //   )
-    // }
-    //#endregion
-
-    return this.http.get<User[]>(this.baseApiUrl).pipe(
-      map((user: User[]) => {
-        if (user)
-          return user;
+        if (userResponce)
+          return userResponce
 
         return null;
       })
-    )
-  }
-
-  getUserId(): Observable<User | null> {
-    return this.http.get<User>(this.baseApiUrl + '655ccfedc43beece8dcb9697').pipe(
-      map((user: User | null) => {
-        if (user)
-          return user;
-        return null;
-      })
-    )
+    );
   }
 }
+ 
