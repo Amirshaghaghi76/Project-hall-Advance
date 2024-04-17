@@ -1,5 +1,3 @@
-using api.Dtos;
-using api.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers;
@@ -7,9 +5,18 @@ namespace api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
-// dotnet version 8(line 11)
+// dotnet version 8(line 11-)
 public class AccountController(IAccountRepository _accountRepository) : ControllerBase
 {
+
+    /// <summary>
+    /// Create accounts
+    /// Concurrency => async is used
+    /// </summary>
+    /// <param name="userInput"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>UserDto</returns>
+
     // private readonly IAccountRepository _accountRepository;
     // public AccountController(IAccountRepository accountRepository)
     // {
@@ -30,6 +37,14 @@ public class AccountController(IAccountRepository _accountRepository) : Controll
 
         return loggedInDto;
     }
+
+/// <summary>
+    /// Login accounts
+    /// </summary>
+    /// <param name="userInput"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>UserDto</returns>
+
     [AllowAnonymous]
     [HttpPost("login")]
     public async Task<ActionResult<LoggedInDto>> Login(LoginDto userInput, CancellationToken cancellationToken)

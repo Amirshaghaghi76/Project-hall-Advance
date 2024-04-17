@@ -1,5 +1,3 @@
-
-using api.Dtos;
 using api.Extensions;
 using Microsoft.AspNetCore.Authorization;
 
@@ -16,16 +14,7 @@ public class UserController : ControllerBase
     {
         _userRepository = userRepository;
     }
-    [AllowAnonymous]
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserDto>>> GetAll(CancellationToken cancellationToken)
-    {
-        List<UserDto> userDtos = await _userRepository.GetAllAsync(cancellationToken);
-        if (!userDtos.Any())
-            return NoContent();
 
-        return userDtos;
-    }
     [Authorize]
     [HttpGet("get-by-id")]
     public async Task<ActionResult<UserDto>> GetById(CancellationToken cancellationToken)
@@ -52,17 +41,6 @@ public class UserController : ControllerBase
 
     //     return userDto;
     // }
-
-    [HttpGet("get-by-email/{userEmail}")]
-    public async Task<ActionResult<UserDto>> GetByEmail(string userEmail, CancellationToken cancellationToken)
-    {
-        UserDto? userDto = await _userRepository.GetByEmailAsync(userEmail, cancellationToken);
-
-        if (userDto is null)
-            return NotFound("no user with this email address");
-
-        return userDto;
-    }
 
 }
 

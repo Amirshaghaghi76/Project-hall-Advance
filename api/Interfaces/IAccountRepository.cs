@@ -1,5 +1,3 @@
-using api.Dtos;
-
 namespace api.Interfaces;
 
 public interface IAccountRepository

@@ -1,5 +1,3 @@
-using api.Dtos;
-
 namespace api.Repositories;
 
 public class UserRepository : IUserRepository
@@ -13,31 +11,10 @@ public class UserRepository : IUserRepository
         var database = client.GetDatabase(dbSettings.DatabaseName);
         _collection = database.GetCollection<AppUser>(_collectionName);
     }
-    public async Task<List<UserDto>> GetAllAsync(CancellationToken cancellationToken)
+
+    public async Task<UserDto?> GetByIdAsync(string? userId, CancellationToken cancellationToken)
     {
-        List<AppUser> appUsers = await _collection.Find<AppUser>(new BsonDocument())
-        .ToListAsync(cancellationToken);
 
-        List<UserDto> userDtos = new List<UserDto>();
-
-        if (appUsers.Any())
-        {
-            foreach (AppUser appUser in appUsers)
-            {
-                UserDto userDto = _Mappers.ConvertAppUserToUserDto(appUser);
-
-                userDtos.Add(userDto);
-            }
-
-            return userDtos;
-        }
-
-        return userDtos;
-    }
-
-    public async Task<UserDto?> GetByIdAsync(string userId, CancellationToken cancellationToken)
-    {
-        
         AppUser appUser = await _collection.Find<AppUser>(user => user.Id == userId).FirstOrDefaultAsync(cancellationToken);
 
         if (appUser.Id is not null)
@@ -49,31 +26,4 @@ public class UserRepository : IUserRepository
 
         return null;
     }
-
-    public async Task<UserDto?> GetByEmailAsync(string userEmail, CancellationToken cancellationToken)
-    {
-        AppUser appUser = await _collection.Find<AppUser>(user =>
-        user.Email == userEmail).FirstOrDefaultAsync(cancellationToken);
-
-        if (appUser.Id is not null)
-        {
-            return _Mappers.ConvertAppUserToUserDto(appUser);
-            // return new UserDto(
-            //     Id: appUser.Id!,
-            //     Email: appUser.Email,
-            //     KnownAs: appUser.KnownAs,
-            //     Created: appUser.Created,
-            //     Gender: appUser.Gender,
-            //     LastActive: appUser.LastActive,
-            //     LookingFor: appUser.LookingFor,
-            //     City: appUser.City,
-            //     Country: appUser.Country,
-            //     Dob: appUser.DateOfBirth,
-            //     Photos: appUser.Photos
-            //  );
-        }
-
-        return null;
-    }
-
 }

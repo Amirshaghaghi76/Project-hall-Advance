@@ -1,6 +1,4 @@
 using System.Security.Cryptography;
-using api.Dtos;
-
 
 namespace api.Repositories
 {
@@ -16,6 +14,14 @@ namespace api.Repositories
             _collection = database.GetCollection<AppUser>(_collectionName);
             _tokenService = tokenService;
         }
+
+        ///<summary>
+        /// create an Appuser and insert in db
+        /// check if the user dosn't alredy exist
+        /// </summary>
+        /// <param name="userInput" > </param>
+        /// <param name="cancellationToken" > </param>
+        /// <returns> LoggedInDto </returns>
 
         public async Task<LoggedInDto?> CreateAsync(RegisterDto userInput, CancellationToken cancellationToken)
         {
@@ -46,7 +52,7 @@ namespace api.Repositories
 
                 return loggedInDto;
             }
-            
+
             return null;
         }
 
@@ -74,7 +80,7 @@ namespace api.Repositories
             {
                 string toKen = _tokenService.CreateToken(appUser);
 
-                return _Mappers.ConvertAppUserToLoggedInDto(appUser,toKen);
+                return _Mappers.ConvertAppUserToLoggedInDto(appUser, toKen);
             }
 
             return null;

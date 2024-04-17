@@ -3,9 +3,9 @@ namespace api.Dtos;
 public record RegisterDto
 (
 // [MinLength(3), MaxLength(10)] string Name,
+[MaxLength(20), RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,5})+)$", ErrorMessage = "Bad Email Format.")] string Email,
 [DataType(DataType.Password), Length(6, 15, ErrorMessage = "min of 6 and max of 15 chars are required")] string PassWord,
 [DataType(DataType.Password), Length(6, 15)] string ConfrimPassword,
-[MaxLength(20), RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,5})+)$", ErrorMessage = "Bad Email Format.")] string Email,
 [Length(3, 10)] string KnownAs,
  DateOnly DateOfBirth,
 [Length(3, 10)] string Gender,
@@ -26,7 +26,6 @@ public record LoginDto(
 
 public record LoggedInDto
 (
-string Id,
 string Email,
 string Token,
 string KnownAs

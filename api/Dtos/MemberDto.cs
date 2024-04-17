@@ -1,16 +1,13 @@
-namespace api.Dtos;
-
-public record UserDto(
+public record MemberDto(
+    // string Schema,
+    string Id,
     string Email,
     string KnownAs,
-    DateTime Created,
     DateTime LastActive,
-    // bool IsPrivate,
     string Gender,
     string? LookingFor,
     string City,
     string Country,
     int Age,
-   List<Photo> Photos
+    List<Photo> Photos
 );
-

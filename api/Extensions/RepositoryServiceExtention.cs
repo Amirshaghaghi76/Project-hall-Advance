@@ -10,8 +10,11 @@ public static class RepositoryServiceExtention
         #region Dependency Injections
         services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
-
+        services.AddScoped<IMemberRepository, MemberRepository>();
+        services.AddScoped<IHallRepository, HallRepository>();
+        
         services.AddScoped<ITokenService, TokenService>();
+
 
         #endregion Dependency Injections
 

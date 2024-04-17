@@ -10,7 +10,7 @@ import { Token } from '@angular/compiler';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class AccountService {
   private currentUserSourse = new BehaviorSubject<User | null>(null);
